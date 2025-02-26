@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aspire 400K - Startup Pitch Program</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, sans-serif;
+        }
+
+        :root {
+            --primary: #FF6B00;
+            --secondary: #004AAD;
+            --accent: #FFD700;
+            --text: #333333;
+            --background: #f5f5f5;
+        }
+
+        body {
+            color: var(--text);
+            line-height: 1.6;
+            background: var(--background);
+        }
+
+        .navbar {
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: white;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+            color: var(--secondary);
+            font-weight: bold;
+            font-size: 1.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text);
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .hero {
+            position: relative;
+            min-height: 80vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 4rem;
+            overflow: hidden;
+        }
+
+        .hero img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            max-width: 800px;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            max-width: 700px;
+        }
+
+        .btn {
+            padding: 0.8rem 2rem;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--primary);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #ff8533;
+        }
+
+        .section {
+            padding: 5rem 5%;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+        }
+
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .feature-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .feature-item h3 {
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .timeline {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 4px;
+            background: var(--primary);
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(odd) {
+            flex-direction: row-reverse;
+            text-align: right;
+        }
+
+        .timeline-content {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            width: 45%;
+        }
+
+        .timeline-date {
+            font-weight: bold;
+            color: var(--primary);
+        }
+
+        .cta {
+            background: var(--secondary);
+            color: white;
+            text-align: center;
+        }
+
+        .footer {
+            background: #f5f5f5;
+            padding: 2rem 5%;
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .timeline::before {
+                left: 20px;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                text-align: left;
+            }
+
+            .timeline-item:nth-child(odd) {
+                flex-direction: column;
+                text-align: left;
+            }
+
+            .timeline-content {
+                width: 100%;
+                margin-top: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar">
+        <a href="#" class="logo">
+            <span>ASPIRE 400K</span>
+        </a>
+        <div class="nav-links">
+            <a href="#about">About</a>
+            <a href="#how-it-works">How It Works</a>
+            <a href="#participate">Participate</a>
+            <a href="#jury">Jury</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <!-- Add your image here -->
+        <img src="Untitled design (5).png" alt="Hero Image">
+        <h1>Aspire 400K Startup Pitch Program</h1>
+        <p>Pitch. Build. Grow.</p>
+        <a href="#participate" class="btn btn-primary">Sign Up to Participate</a>
+    </header>
+
+    <section class="section" id="about">
+        <h2 class="section-title">About Aspire 400K</h2>
+        <div class="features">
+            <div class="feature-item">
+                <h3>Jump-starting Startups</h3>
+                <p>One of a kind platform for early-stage entrepreneurs, providing funding, mentorship, and networking opportunities.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Mission</h3>
+                <p>Make India a superpower by churning out more startups than the world can handle.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Our Solution</h3>
+                <p>Give startups a fighting chance to survive and thrive by providing the necessary support.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="how-it-works" style="background: var(--background);">
+        <h2 class="section-title">Competition Timeline</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Presentation Submission</h3>
+                    <p>Submit your presentation for evaluation.</p>
+                    <div class="timeline-date">15th March</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Video Pitch Round</h3>
+                    <p>Shortlisted teams present their ideas in a video pitch.</p>
+                    <div class="timeline-date">31st March</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Investor's Pitch Round</h3>
+                    <p>Finalists pitch their ideas to a panel of investors.</p>
+                    <div class="timeline-date">7th April</div>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Winner Announcement</h3>
+                    <p>The winners of Aspire 400K are announced.</p>
+                    <div class="timeline-date">15th April</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section" id="participate">
+        <h2 class="section-title">How to Participate</h2>
+        <div class="features">
+            <div class="feature-item">
+                <h3>Eligibility</h3>
+                <p>Startups less than 3 years old with less than INR 500K in funding.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Prizes</h3>
+                <p>Win up to ₹4,00,000 in funding and mentorship opportunities.</p>
+            </div>
+            <div class="feature-item">
+                <h3>Networking</h3>
+                <p>Connect with investors and mentors to grow your startup.</p>
+            </div>
+        </div>
+        <div style="text-align: center; margin-top: 2rem;">
+            <a href="#register" class="btn btn-primary">Sign Up to Participate</a>
+        </div>
+    </section>
+
+    <section class="section cta">
+        <h2 class="section-title">Ready to Pitch Your Idea?</h2>
+        <p style="margin-bottom: 2rem;">Join India's largest startup pitch competition and turn your idea into reality.</p>
+        <a href="#register" class="btn btn-primary">Register Now</a>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2024 Aspire 400K. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 50) {
+                document.querySelector('.navbar').style.background = 'rgba(255,255,255,0.95)';
+            } else {
+                document.querySelector('.navbar').style.background = 'white';
+            }
+        });
+    </script>
+</body>
+</html>
