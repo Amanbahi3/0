@@ -65,6 +65,19 @@
             color: var(--primary);
         }
 
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .hamburger .bar {
+            width: 25px;
+            height: 3px;
+            background-color: var(--text);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+
         .hero {
             position: relative;
             min-height: 80vh;
@@ -204,8 +217,40 @@
         }
 
         @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
             .nav-links {
-                display: none;
+                position: fixed;
+                right: -100%;
+                top: 5rem;
+                flex-direction: column;
+                background-color: white;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .nav-links a {
+                margin: 2.5rem 0;
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
             }
 
             .hero h1 {
@@ -242,6 +287,11 @@
         <a href="#" class="logo">
             <span>ASPIRE 400K</span>
         </a>
+        <div class="hamburger">
+            <div class="bar"></div>
+            <div class="bar"></div>
+            <div class="bar"></div>
+        </div>
         <div class="nav-links">
             <a href="#about">About</a>
             <a href="#how-it-works">How It Works</a>
@@ -252,7 +302,6 @@
     </nav>
 
     <header class="hero">
-        <!-- Add your image here -->
         <img src="Untitled design (5).png" alt="Hero Image">
         <h1>Aspire 400K Startup Pitch Program</h1>
         <p>Pitch. Build. Grow.</p>
@@ -343,6 +392,23 @@
     </footer>
 
     <script>
+        // Hamburger toggle
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close nav menu when a link is clicked
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
         // Smooth scroll for anchor links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
